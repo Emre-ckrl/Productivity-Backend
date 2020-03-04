@@ -44,6 +44,7 @@ public class MessageHandler {
     @GetMapping("/show/{id}")
     @ResponseBody
     public List<String> showMessages(@PathVariable("id") int id) {
+        System.out.println("Got request");
         List<String> messages = new ArrayList<>();
 
         for (Message message : messageRepository.getMessages()) {
