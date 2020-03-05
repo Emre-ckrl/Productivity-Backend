@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +47,8 @@ public class MessageHandler {
         List<String> messages = new ArrayList<>();
 
         for (Message message : messageRepository.getMessages()) {
-            if (message.sender.id == id || message.receiver.id == id) {
+            if (message.sender != null &&
+                    (message.sender.id == id || message.receiver.id == id)) {
                 messages.add(message.text);
 
             }
