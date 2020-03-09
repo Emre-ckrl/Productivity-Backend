@@ -2,14 +2,19 @@ package cakiral.emre.projects.messenger;
 
 import cakiral.emre.projects.Human;
 import cakiral.emre.projects.Message;
+import cakiral.emre.projects.MessageRequestData;
+import cakiral.emre.projects.ToDoRequestData;
 import cakiral.emre.projects.repositories.HumanRepository;
 import cakiral.emre.projects.repositories.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/")
@@ -25,35 +30,29 @@ public class MessageHandler {
         this.messageRepository = messageRepository;
     }
 
-    @GetMapping("/send/{id}/{receiverId}")
-    @ResponseBody
-    public String sendMessage(@PathVariable("id") int id, @PathVariable("receiverId") int receiverId) {
+    @CrossOrigin (origins = "http://localhost:4200")
+    @PostMapping(path="/send", consumes = "application/json")
+    public void sendMessage(@RequestBody MessageRequestData messageRequestData, HttpServletResponse response) {
+        String message = messageRequestData.text;
+        System.out.println("Sender " + messageRequestData.senderId);
+        System.out.println("Receiver " + messageRequestData.receiverId);
 
-        String message = "Hello, whats up?";
-
-        Human sender = humanRepository.getHumanById(id);
-        Human receiver = humanRepository.getHumanById(receiverId);
+        Human sender = humanRepository.getHumanById(messageRequestData.senderId);
+        Human receiver = humanRepository.getHumanById(messageRequestData.receiverId);
         messageRepository.addMessage(message, sender, receiver);
-
-
-        return message;
+        response.setStatus(HttpStatus.CREATED.value());
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/show/{id}")
     @ResponseBody
-    public List<String> showMessages(@PathVariable("id") int id) {
+    public List<Message> showMessages(@PathVariable("id") int id) {
         System.out.println("Got request");
-        List<String> messages = new ArrayList<>();
 
-        for (Message message : messageRepository.getMessages()) {
-            if (message.sender != null &&
-                    (message.sender.id == id || message.receiver.id == id)) {
-                messages.add(message.text);
-
-            }
-        }
-
-        return messages;
+        return messageRepository.getMessages()
+                .stream()
+                .filter(message -> (message.sender.id == id
+                        || message.receiver.id == id))
+                .collect(Collectors.toList());
     }
 }
