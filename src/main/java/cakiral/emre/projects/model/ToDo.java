@@ -1,5 +1,6 @@
-package cakiral.emre.projects;
+package cakiral.emre.projects.model;
 
+import cakiral.emre.projects.model.Human;
 import lombok.Getter;
 import lombok.Setter;
 

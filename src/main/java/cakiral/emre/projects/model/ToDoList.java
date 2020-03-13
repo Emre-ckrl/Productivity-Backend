@@ -1,6 +1,5 @@
-package cakiral.emre.projects.repositories;
+package cakiral.emre.projects.model;
 
-import cakiral.emre.projects.ToDo;
 import lombok.Getter;
 import lombok.Setter;
 

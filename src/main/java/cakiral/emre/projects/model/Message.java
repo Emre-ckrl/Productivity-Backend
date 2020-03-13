@@ -1,4 +1,4 @@
-package cakiral.emre.projects;
+package cakiral.emre.projects.model;
 
 public class Message {
     public String text;

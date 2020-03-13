@@ -1,6 +1,5 @@
-package cakiral.emre.projects;
+package cakiral.emre.projects.handler.requestdata;
 
-import cakiral.emre.projects.repositories.ToDoList;
 import lombok.Getter;
 import lombok.Setter;
 

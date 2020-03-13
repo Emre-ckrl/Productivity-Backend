@@ -1,9 +1,8 @@
-package cakiral.emre.projects.messenger;
+package cakiral.emre.projects.handler;
 
-import cakiral.emre.projects.Human;
-import cakiral.emre.projects.Message;
-import cakiral.emre.projects.MessageRequestData;
-import cakiral.emre.projects.ToDoRequestData;
+import cakiral.emre.projects.model.Human;
+import cakiral.emre.projects.model.Message;
+import cakiral.emre.projects.handler.requestdata.MessageRequestData;
 import cakiral.emre.projects.repositories.HumanRepository;
 import cakiral.emre.projects.repositories.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

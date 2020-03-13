@@ -1,7 +1,7 @@
 package cakiral.emre.projects.repositories;
 
 
-import cakiral.emre.projects.Human;
+import cakiral.emre.projects.model.Human;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

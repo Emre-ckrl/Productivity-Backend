@@ -1,8 +1,9 @@
 package cakiral.emre.projects.repositories;
 
 
-import cakiral.emre.projects.Human;
-import cakiral.emre.projects.ToDo;
+import cakiral.emre.projects.model.Human;
+import cakiral.emre.projects.model.ToDo;
+import cakiral.emre.projects.model.ToDoList;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

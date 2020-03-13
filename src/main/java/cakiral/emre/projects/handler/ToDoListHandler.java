@@ -1,10 +1,9 @@
-package cakiral.emre.projects.messenger;
+package cakiral.emre.projects.handler;
 
-import cakiral.emre.projects.Human;
-import cakiral.emre.projects.ToDo;
-import cakiral.emre.projects.ToDoRequestData;
+import cakiral.emre.projects.model.Human;
+import cakiral.emre.projects.handler.requestdata.ToDoRequestData;
 import cakiral.emre.projects.repositories.HumanRepository;
-import cakiral.emre.projects.repositories.ToDoList;
+import cakiral.emre.projects.model.ToDoList;
 import cakiral.emre.projects.repositories.ToDoListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/")

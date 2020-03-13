@@ -1,4 +1,4 @@
-package cakiral.emre.projects;
+package cakiral.emre.projects.handler.requestdata;
 
 import lombok.Getter;
 import lombok.Setter;
